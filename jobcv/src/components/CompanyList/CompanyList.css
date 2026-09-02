@@ -1,0 +1,193 @@
+.company-section {
+    width: 100%;
+    padding: 30px 0 50px;
+}
+
+
+/* ================= BANNER ================= */
+
+.company-banner {
+    height: 133px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    border-radius: 4px 4px 0 0;
+
+    background:
+            linear-gradient(
+                    90deg,
+                    #4a380b 0%,
+                    #765717 45%,
+                    #40300b 100%
+            );
+
+    color: white;
+}
+
+
+.banner-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+}
+
+
+.banner-description {
+    margin-top: 8px !important;
+
+    font-size: 14px !important;
+}
+
+
+.pro-company-button {
+    padding: 9px 25px !important;
+
+    border-radius: 25px !important;
+
+    background: #ffd278 !important;
+
+    color: #5b3800 !important;
+
+    font-size: 17px !important;
+    font-weight: 700 !important;
+
+    text-transform: none !important;
+}
+
+
+/* ================= CATEGORY ================= */
+
+.company-category-wrapper {
+    display: flex;
+    align-items: center;
+
+    margin: 16px 0 12px;
+
+    position: relative;
+}
+
+
+.company-categories {
+    display: flex;
+    gap: 8px;
+
+    overflow: hidden;
+
+    flex: 1;
+}
+
+
+.company-category {
+    flex-shrink: 0;
+
+    padding: 8px 18px !important;
+
+    border-radius: 20px !important;
+
+    background: #f5f6f7 !important;
+
+    color: #263238 !important;
+
+    font-size: 14px !important;
+
+    text-transform: none !important;
+
+    white-space: nowrap;
+}
+
+
+.company-category.active {
+    background: #967021 !important;
+
+    color: white !important;
+}
+
+
+/* arrows */
+
+.category-arrows {
+    display: flex;
+
+    gap: 8px;
+
+    margin-left: 10px;
+}
+
+
+.category-arrows button {
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid #c4a261;
+
+    color: #8b671c;
+}
+
+
+/* ================= COMPANY LAYOUT ================= */
+
+.company-layout {
+    display: flex;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* ================= GRID ================= */
+
+.company-grid {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .company-layout {
+        flex-direction: column;
+    }
+
+    .company-featured {
+        width: 100% !important;
+    }
+
+    .company-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .company-banner {
+        padding: 0 20px;
+    }
+
+    .banner-title {
+        font-size: 18px !important;
+    }
+
+    .banner-description {
+        font-size: 12px !important;
+    }
+
+    .pro-company-button {
+        padding: 7px 15px !important;
+
+        font-size: 13px !important;
+    }
+
+}
