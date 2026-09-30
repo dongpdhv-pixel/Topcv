@@ -6,7 +6,7 @@ import {
     Container,
     Paper,
     Typography,
-    InputBase,
+    InputBase
 } from '@mui/material'
 
 import SearchIcon from '@mui/icons-material/Search'
@@ -14,31 +14,115 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 
-
-import { getData } from '../../Services/data.service'
+import { getJobs, getCompanies } from '../../Services/data.service'
 
 import JobList from '../../components/JobList/JobList'
+import CompanyList from '../../components/CompanyList/CompanyList.jsx'
 
 import './Home.css'
-import CompanyList  from "../../components/CompanyList/CompanyList.jsx";
-import JobStatistics from '../../components/JobStatistics/JobStatistics.jsx'
-function Home() {
+
+function Home({ setPage, refreshJobs, onJobClick }) {
 
     const [jobs, setJobs] = useState([])
     const [companies, setCompanies] = useState([])
+
     useEffect(() => {
 
         async function loadData() {
 
             try {
 
-                const data = await getData()
-                setCompanies(data.companies || [])
-                setJobs(data.jobs)
+                const jobsResult = await getJobs({
+                    page: 1
+                })
+
+                const companiesResult = await getCompanies()
+
+                console.log('JOBS RESULT:', jobsResult)
+                console.log('COMPANIES RESULT:', companiesResult)
+
+
+                // =========================
+                // JOB TỪ API
+                // =========================
+
+                let jobList = jobsResult.data || []
+
+
+                // =========================
+                // JOB VỪA ĐĂNG
+                // =========================
+
+                const savedJob =
+                    localStorage.getItem('topcv_new_job')
+
+
+                if (savedJob) {
+
+                    try {
+
+                        const newJob =
+                            JSON.parse(savedJob)
+
+                        // Đưa tin mới lên đầu
+                        jobList = [
+                            newJob,
+                            ...jobList
+                        ]
+
+                    } catch (error) {
+
+                        console.error(
+                            'Không đọc được job vừa đăng:',
+                            error
+                        )
+
+                    }
+                }
+
+
+                // =========================
+                // HIỂN THỊ
+                // =========================
+
+                setJobs(jobList)
+
+                setCompanies(
+                    companiesResult.data || []
+                )
 
             } catch (error) {
 
-                console.error(error)
+                console.error(
+                    'Lỗi lấy dữ liệu:',
+                    error
+                )
+
+
+                // =========================
+                // API LỖI VẪN HIỆN JOB MỚI
+                // =========================
+
+                const savedJob =
+                    localStorage.getItem('topcv_new_job')
+
+
+                if (savedJob) {
+
+                    try {
+
+                        const newJob =
+                            JSON.parse(savedJob)
+
+                        setJobs([newJob])
+
+                    } catch (error) {
+
+                        console.error(error)
+
+                    }
+
+                }
 
             }
 
@@ -46,7 +130,7 @@ function Home() {
 
         loadData()
 
-    }, [])
+    }, [refreshJobs])
 
 
     const categories = [
@@ -61,8 +145,6 @@ function Home() {
 
     return (
         <>
-
-            {/* HERO */}
 
             <Box className="hero">
 
@@ -85,7 +167,6 @@ function Home() {
                             className="keyword-input"
                             placeholder="Vị trí tuyển dụng, tên công ty"
                         />
-
 
                         <Box className="location-box">
 
@@ -169,21 +250,139 @@ function Home() {
             </Box>
 
 
-            {/* JOB LIST */}
 
-            <Container maxWidth="lg">
 
-                <JobList jobs={jobs} />
 
-            </Container>
+            {/* JOB */}
+
+            {/* =========================
+                BANNER AN TOÀN
+            ========================= */}
+
+            <div className="safe-banner">
+
+                <span>
+                    🔎
+                </span>
+
+                <strong>
+                    Tìm việc an toàn cùng TopCV
+                </strong>
+
+                <button>
+                    Tìm hiểu thêm →
+                </button>
+
+            </div>
+
+
+            {/* =========================
+                VIỆC LÀM NỔI BẬT
+            ========================= */}
+
+            <Box className="featured-jobs">
+
+                <Container maxWidth="lg">
+
+                    <div className="featured-header">
+
+                        <div>
+
+                            <h2>
+                                Việc làm nổi bật
+                            </h2>
+
+                            <p>
+                                Tìm kiếm cơ hội việc làm phù hợp với bạn
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            onClick={() => setPage('jobs')}
+                        >
+                            Xem tất cả →
+                        </button>
+
+                    </div>
+
+
+                    {/* TABS */}
+
+                    <div className="featured-tabs">
+
+                        <button className="active">
+                            Việc văn phòng
+                        </button>
+
+                        <button>
+                            Việc phổ thông
+                        </button>
+
+                    </div>
+
+
+                    {/* FILTER */}
+
+                    <div className="featured-filter">
+
+                        <span>
+                            ⚙ Lọc theo:
+                        </span>
+
+                        <button className="active">
+                            Ngẫu nhiên
+                        </button>
+
+                        <button>
+                            Hà Nội
+                        </button>
+
+                        <button>
+                            Thành phố Hồ Chí Minh
+                        </button>
+
+                        <button>
+                            Miền Bắc
+                        </button>
+
+                        <button>
+                            Miền Nam
+                        </button>
+
+                    </div>
+
+
+                    {/* NOTE */}
+
+                    <div className="featured-note">
+
+                        💡 Di chuột vào tiêu đề việc làm để xem thêm thông tin chi tiết
+
+                    </div>
+
+
+                    {/* JOB LIST */}
+
+                    <JobList
+                        jobs={jobs.slice(0, 6)}
+                        onJobClick={onJobClick}
+                    />
+
+                </Container>
+
+            </Box>
+
+
+
+            {/* COMPANY */}
 
             <Container maxWidth="lg">
 
                 <CompanyList companies={companies} />
-                <JobStatistics jobs={jobs} companies={companies} />
 
             </Container>
-
 
         </>
     )

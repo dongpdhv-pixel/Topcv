@@ -1,68 +1,100 @@
 import {
     Box,
-    Paper,
-    Typography,
-    IconButton
+    IconButton,
+    Typography
 } from '@mui/material'
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 
 import './JobCard.css'
 
-function JobCard({ job }) {
 
-    console.log('LOGO:', job.company?.logo_url)
+function JobCard({ job, onClick }) {
 
     return (
-        <Paper className="job-card" elevation={0}>
+
+        <Box className="job-card"
+        onClick={onClick}>
+
+            {/* LOGO */}
 
             <Box className="job-logo">
 
                 <img
-                    src={job.company?.logo_url}
-                    alt="logo"
-                    onError={(e) => {
-                        console.log('Ảnh lỗi:', e.currentTarget.src)
-                    }}
-                    onLoad={() => {
-                        console.log('Ảnh load thành công')
-                    }}
+                    src={
+                        job.company?.logo ||
+                        job.company_logo ||
+                        job.logo ||
+                        'https://via.placeholder.com/80'
+                    }
+                    alt=""
                 />
 
             </Box>
 
+
+            {/* CONTENT */}
+
             <Box className="job-content">
 
-                <Typography className="job-title">
-                    {job.title}
+                <Typography
+                    className="job-name"
+                    title={job.title || job.name}
+                >
+
+                    {job.title || job.name || 'Việc làm'}
+
                 </Typography>
 
-                <Typography className="company-name">
-                    {job.company?.company_name}
+
+                <Typography className="job-company">
+
+                    {
+                        job.company?.name ||
+                        job.company_name ||
+                        'Tên công ty'
+                    }
+
                 </Typography>
 
-                <Box className="job-tags">
 
-                    <span>
-                        {job.salary?.is_negotiable
-                            ? 'Thỏa thuận'
-                            : `${job.salary?.min / 1000000} - ${job.salary?.max / 1000000} triệu`
+                <Box className="job-bottom">
+
+                    <Box className="job-tag">
+
+                        <div>
+                            {job.salary?.is_negotiable
+                                ? "Thỏa thuận"
+                                : `${job.salary?.min} - ${job.salary?.max} ${job.salary?.currency}`}
+                        </div>
+
+                    </Box>
+
+
+                    <Box className="job-tag">
+
+                        {
+                            job.city?.name ||
+                            job.city_name ||
+                            'Hà Nội'
                         }
-                    </span>
 
-                    <span>
-                        {job.work_location?.[0]?.city_name}
-                    </span>
+                    </Box>
 
                 </Box>
 
             </Box>
 
-            <IconButton className="favorite-button">
+
+            {/* FAVORITE */}
+
+            <IconButton className="job-favorite">
+
                 <FavoriteBorderIcon />
+
             </IconButton>
 
-        </Paper>
+        </Box>
     )
 }
 

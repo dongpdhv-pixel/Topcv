@@ -1,13 +1,48 @@
-export async function getData() {
-    const response = await fetch('/db.json')
+const API_URL = 'http://0.0.0.0:8000'
 
-    if (!response.ok) {
-        throw new Error(`Không thể tải db.json: ${response.status}`)
+export const getJobs = async ({
+                                  page = 1,
+                                  keyword = '',
+                                  category_slug = '',
+                                  city_id = ''
+                              } = {}) => {
+
+    const params = new URLSearchParams()
+
+    params.append('page', page)
+
+    if (keyword) {
+        params.append('keyword', keyword)
     }
 
-    const data = await response.json()
+    if (category_slug) {
+        params.append('category_slug', category_slug)
+    }
 
-    console.log('DATA:', data)
+    if (city_id) {
+        params.append('city_id', city_id)
+    }
 
-    return data
+    const response = await fetch(
+        `${API_URL}/jobs?${params.toString()}`
+    )
+
+    if (!response.ok) {
+        throw new Error('Không thể lấy danh sách việc làm')
+    }
+
+    return await response.json()
+}
+
+export const getCompanies = async () => {
+
+    const response = await fetch(
+        `${API_URL}/companies`
+    )
+
+    if (!response.ok) {
+        throw new Error('Không thể lấy danh sách công ty')
+    }
+
+    return await response.json()
 }

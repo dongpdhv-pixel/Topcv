@@ -1,24 +1,60 @@
 import './Header.css'
 
-function Header({ setPage }) {
+
+function Header({ setPage, user }) {
+
+    const handleRegister = () => {
+
+        window.history.pushState(
+            { page: 'register' },
+            '',
+            '/register'
+        )
+
+        setPage('register')
+    }
+
+
+    const handlePostFine = () => {
+
+        window.history.pushState(
+            { page: 'register' },
+            '',
+            '/register'
+        )
+
+        setPage('register')
+    }
+
+
     return (
         <header className="header">
+
             <div className="header-container">
 
-                {/* Logo */}
+                {/* LOGO */}
                 <button
                     className="header-logo"
                     onClick={() => setPage('home')}
                 >
-                    <div className={"logo"}>
-                        <p className={"black-logo"}>TOP</p><p>CV</p>
+                    <div className="logo">
+                        <p className="black-logo">
+                            TOP
+                        </p>
+
+                        <p>
+                            CV
+                        </p>
                     </div>
                 </button>
 
-                {/* Menu */}
+
+                {/* MENU */}
                 <nav className="header-menu">
 
-                    <button onClick={() => setPage('jobs')}>
+                    <button
+                        onClick={() => setPage('jobs')}
+                    >
                         Việc làm
                     </button>
 
@@ -34,31 +70,88 @@ function Header({ setPage }) {
                         Cẩm nang nghề nghiệp
                     </button>
 
-
                 </nav>
 
-                {/* Đăng nhập / Đăng ký */}
+
+                {/* ACTIONS */}
                 <div className="header-actions">
 
-                    <button
-                        className="login-button"
-                        onClick={() => setPage('login')}
-                    >
-                        Đăng nhập
-                    </button>
+                    {user ? (
 
-                    <button
-                        className="register-button"
-                        onClick={() => setPage('register')}
-                    >
-                        Đăng ký
-                    </button>
+                        /* =========================
+                           ĐÃ ĐĂNG NHẬP
+                        ========================= */
+
+                        <div className="header-user">
+
+                            <div className="header-avatar">
+                                {user.full_name
+                                    ? user.full_name.charAt(0).toUpperCase()
+                                    : 'U'
+                                }
+                            </div>
+
+                            <span className="header-user-name">
+                                {user.full_name}
+                            </span>
+
+                        </div>
+
+                    ) : (
+
+                        /* =========================
+                           CHƯA ĐĂNG NHẬP
+                        ========================= */
+
+                        <>
+
+                            <button
+                                className="login-button"
+                                onClick={() => setPage('login')}
+                            >
+                                Đăng nhập
+                            </button>
+
+
+                            <button
+                                className="register-button"
+                                onClick={handleRegister}
+                            >
+                                Đăng ký
+                            </button>
+
+                        </>
+
+                    )}
+
+
+                    {/* ĐĂNG TUYỂN + TÌM HỒ SƠ */}
+
+                    {user?.accountType === 'employer' ? (
+                        <button className="post-find-button" onClick={() => setPage('post-job')}>
+                            Đăng tuyển
+                        </button>
+
+                    ) : (
+                        <button className="post-fine-button" onClick={() => {
+                            window.history.pushState(
+                                {page: "register"},
+                                '',
+                                '/register'
+                            )
+                            setPage('register')
+                        }}>
+                            Đăng tuyển & tìm hồ sơ
+                        </button>
+                    )}
 
                 </div>
 
             </div>
+
         </header>
     )
 }
+
 
 export default Header
