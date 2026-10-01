@@ -12,10 +12,52 @@ import Register from './Pages/Register/Register'
 import PostJob from './Pages/PostJob/PostJob'
 
 
+// =========================
+// LẤY PAGE TỪ URL
+// =========================
+
+const getPageFromPath = () => {
+
+    const path = window.location.pathname
+
+    switch (path) {
+
+        case '/':
+        case '/home':
+            return 'home'
+
+        case '/jobs':
+            return 'jobs'
+
+        case '/job-detail':
+            return 'job-detail'
+
+        case '/companies':
+            return 'companies'
+
+        case '/company-detail':
+            return 'company-detail'
+
+        case '/login':
+            return 'login'
+
+        case '/register':
+        case '/sign-up':
+            return 'register'
+
+        case '/post-job':
+            return 'post-job'
+
+        default:
+            return 'home'
+    }
+}
+
+
 function App() {
 
     // =========================
-    // USER ĐANG ĐĂNG NHẬP
+    // USER
     // =========================
 
     const [user, setUser] = useState(() => {
@@ -33,55 +75,113 @@ function App() {
     // PAGE
     // =========================
 
-    const [page, setPage] = useState('home')
+    const [page, setPage] = useState(
+        getPageFromPath()
+    )
 
 
     // =========================
-    // JOB ĐANG ĐƯỢC CHỌN
+    // JOB ĐANG CHỌN
     // =========================
 
-    const [selectedJob, setSelectedJob] = useState(null)
+    const [selectedJob, setSelectedJob] =
+        useState(null)
 
 
     // =========================
     // REFRESH JOB
     // =========================
 
-    const [refreshJobs, setRefreshJobs] = useState(0)
+    const [refreshJobs, setRefreshJobs] =
+        useState(0)
 
 
     // =========================
-    // CLICK VÀO JOB CARD
+    // CHUYỂN TRANG
+    // =========================
+
+    const navigate = (nextPage) => {
+
+        const paths = {
+            home: '/',
+            jobs: '/jobs',
+            'job-detail': '/job-detail',
+            companies: '/companies',
+            'company-detail': '/company-detail',
+            login: '/login',
+            register: '/register',
+            'post-job': '/post-job'
+        }
+
+
+        const nextPath =
+            paths[nextPage] || '/'
+
+
+        // thêm lịch sử trình duyệt
+        window.history.pushState(
+            {
+                page: nextPage
+            },
+            '',
+            nextPath
+        )
+
+
+        setPage(nextPage)
+    }
+
+
+    // =========================
+    // CLICK JOB
     // =========================
 
     const handleJobClick = (job) => {
 
         setSelectedJob(job)
 
-        setPage('job-detail')
+        navigate('job-detail')
     }
 
 
     // =========================
-    // NÚT BACK TRÌNH DUYỆT
+    // BACK / FORWARD
     // =========================
 
     useEffect(() => {
 
-        const handleBack = () => {
-            setPage('home')
+        // Đảm bảo trang hiện tại có history state
+        window.history.replaceState(
+            {
+                page: getPageFromPath()
+            },
+            '',
+            window.location.pathname
+        )
+
+
+        const handlePopState = (event) => {
+
+            const pageFromHistory =
+                event.state?.page ||
+                getPageFromPath()
+
+
+            setPage(pageFromHistory)
         }
+
 
         window.addEventListener(
             'popstate',
-            handleBack
+            handlePopState
         )
+
 
         return () => {
 
             window.removeEventListener(
                 'popstate',
-                handleBack
+                handlePopState
             )
 
         }
@@ -100,12 +200,12 @@ function App() {
             {page !== 'register' && (
 
                 <Header
-                    setPage={setPage}
+                    setPage={navigate}
                     user={user}
+                    setUser={setUser}
                 />
 
             )}
-
 
 
             {/* =========================
@@ -115,13 +215,12 @@ function App() {
             {page === 'home' && (
 
                 <Home
-                    setPage={setPage}
+                    setPage={navigate}
                     refreshJobs={refreshJobs}
                     onJobClick={handleJobClick}
                 />
 
             )}
-
 
 
             {/* =========================
@@ -137,7 +236,6 @@ function App() {
             )}
 
 
-
             {/* =========================
                 JOB DETAIL
             ========================= */}
@@ -145,12 +243,11 @@ function App() {
             {page === 'job-detail' && (
 
                 <JobDetail
-                    setPage={setPage}
+                    setPage={navigate}
                     job={selectedJob}
                 />
 
             )}
-
 
 
             {/* =========================
@@ -160,12 +257,11 @@ function App() {
             {page === 'post-job' && (
 
                 <PostJob
-                    setPage={setPage}
+                    setPage={navigate}
                     setRefreshJobs={setRefreshJobs}
                 />
 
             )}
-
 
 
             {/* =========================
@@ -175,12 +271,11 @@ function App() {
             {page === 'login' && (
 
                 <Login
-                    setPage={setPage}
+                    setPage={navigate}
                     setUser={setUser}
                 />
 
             )}
-
 
 
             {/* =========================
@@ -190,12 +285,11 @@ function App() {
             {page === 'register' && (
 
                 <Register
-                    setPage={setPage}
+                    setPage={navigate}
                     setUser={setUser}
                 />
 
             )}
-
 
 
             {/* =========================
@@ -205,11 +299,10 @@ function App() {
             {page === 'companies' && (
 
                 <Companies
-                    setPage={setPage}
+                    setPage={navigate}
                 />
 
             )}
-
 
 
             {/* =========================
@@ -219,12 +312,11 @@ function App() {
             {page === 'company-detail' && (
 
                 <CompanyDetail
-                    setPage={setPage}
+                    setPage={navigate}
                 />
 
             )}
-
-           <Footer />
+        <Footer />
         </>
     )
 }
