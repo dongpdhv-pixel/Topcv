@@ -41,9 +41,8 @@ function JobDetail({ setPage, job }) {
     }
 
 
-    // =========================
+
     // DATA
-    // =========================
 
     const title =
         job.title ||
@@ -120,9 +119,8 @@ function JobDetail({ setPage, job }) {
         'Chưa có thông tin quyền lợi.'
 
 
-    // =========================
+
     // RENDER CONTENT
-    // =========================
 
     const renderContent = (content) => {
 
@@ -156,9 +154,7 @@ function JobDetail({ setPage, job }) {
 
         <div className="job-detail-page">
 
-            {/* =================================
-                SEARCH HEADER
-            ================================= */}
+            {/* SEARCH HEADER */}
 
             <div className="job-detail-search">
 
@@ -194,9 +190,7 @@ function JobDetail({ setPage, job }) {
             <Container maxWidth="lg">
 
 
-                {/* =================================
-                    BREADCRUMB
-                ================================= */}
+                {/* BREADCRUMB */}
 
                 <div className="job-breadcrumb">
 
@@ -223,9 +217,7 @@ function JobDetail({ setPage, job }) {
                 </div>
 
 
-                {/* =================================
-                    TOP JOB
-                ================================= */}
+                {/* TOP JOB */}
 
                 <div className="job-detail-layout">
 
@@ -537,9 +529,7 @@ function JobDetail({ setPage, job }) {
                     </div>
 
 
-                    {/* =================================
-                        RIGHT SIDEBAR
-                    ================================= */}
+                    {/* RIGHT SIDEBAR */}
 
                     <div className="job-detail-right">
 

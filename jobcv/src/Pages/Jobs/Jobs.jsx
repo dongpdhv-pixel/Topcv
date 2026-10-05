@@ -26,18 +26,11 @@ import './Jobs.css'
 function Jobs({onJobClick}) {
 
     const [jobs, setJobs] = useState([])
-
     const [page, setPage] = useState(1)
-
     const [keyword, setKeyword] = useState('')
-
     const [cityId, setCityId] = useState('')
-
     const [loading, setLoading] = useState(false)
-
     const [error, setError] = useState('')
-
-
     const locations = [
         {
             id: '',

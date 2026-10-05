@@ -6,9 +6,7 @@ function Header({ setPage, user, setUser }) {
     const [showMenu, setShowMenu] = useState(false)
 
 
-    // =========================
-    // ĐĂNG XUẤT
-    // =========================
+   // Đăng xuất
 
     const handleLogout = () => {
 
@@ -34,9 +32,7 @@ function Header({ setPage, user, setUser }) {
             <div className="header-container">
 
 
-                {/* =========================
-                    LOGO
-                ========================= */}
+                {/*Logo*/}
 
                 <button
                     className="header-logo"
@@ -58,9 +54,8 @@ function Header({ setPage, user, setUser }) {
                 </button>
 
 
-                {/* =========================
-                    MENU
-                ========================= */}
+                {/*Menu*/}
+
 
                 <nav className="header-menu">
 
@@ -88,16 +83,12 @@ function Header({ setPage, user, setUser }) {
                 </nav>
 
 
-                {/* =========================
-                    ACTIONS
-                ========================= */}
+                {/*Action*/}
 
                 <div className="header-actions">
 
 
-                    {/* =========================
-                        CHƯA ĐĂNG NHẬP
-                    ========================= */}
+                    {/*Chưa đăng nhập*/}
 
                     {!user && (
                         <>
@@ -135,9 +126,7 @@ function Header({ setPage, user, setUser }) {
                     )}
 
 
-                    {/* =========================
-                        ĐÃ ĐĂNG NHẬP
-                    ========================= */}
+                    {/* ĐÃ ĐĂNG NHẬP */}
 
                     {user && (
                         <>

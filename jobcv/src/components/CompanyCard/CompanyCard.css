@@ -1,28 +1,20 @@
-/* =====================================================
-   COMPANY FEATURED
-===================================================== */
+/*  COMPANY FEATURED */
 
 .company-featured {
     width: 350px;
     min-width: 350px;
     height: 505px;
-
     position: relative;
-
     overflow: hidden;
-
     border-radius: 16px !important;
-
     background:
             linear-gradient(
                     rgba(52, 48, 19, 0.78),
                     rgba(62, 55, 18, 0.88)
             ),
             url('/images/company-bg.jpg');
-
     background-size: cover;
     background-position: center;
-
     border: none !important;
 }
 
@@ -30,37 +22,26 @@
 .featured-content {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
-
     padding: 30px;
-
     color: white;
-
     text-align: center;
 }
 
 
 /* Logo */
-
 .featured-logo {
     width: 120px;
     height: 120px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-bottom: 20px;
-
     border-radius: 10px;
-
     background: white;
-
     overflow: hidden;
 }
 
@@ -68,7 +49,6 @@
 .featured-logo img {
     width: 90%;
     height: 90%;
-
     object-fit: contain;
 }
 
@@ -77,17 +57,13 @@
 
 .featured-name {
     max-width: 300px;
-
     font-size: 22px !important;
     font-weight: 700 !important;
-
     line-height: 1.4 !important;
 }
 
-
 .featured-category {
     margin-top: 5px !important;
-
     font-size: 14px !important;
     font-weight: 600 !important;
 }
@@ -99,15 +75,10 @@
     display: flex;
     align-items: center;
     gap: 7px;
-
     margin-top: 20px;
-
     padding: 9px 20px;
-
     border-radius: 20px;
-
     background: rgba(0, 0, 0, 0.35);
-
     font-size: 14px;
     font-weight: 600;
 }
@@ -122,18 +93,12 @@
 
 .featured-pro {
     margin-top: 18px !important;
-
     padding: 7px 24px !important;
-
     border-radius: 20px !important;
-
     background: #ffd16f !important;
-
     color: #5b3800 !important;
-
     font-size: 15px !important;
     font-weight: 700 !important;
-
     text-transform: none !important;
 }
 
@@ -142,45 +107,30 @@
 
 .featured-follow {
     width: 140px;
-
     margin-top: 12px !important;
-
     border-radius: 20px !important;
-
     background: white !important;
-
     color: #374151 !important;
-
     text-transform: none !important;
 }
 
 
-/* =====================================================
-   NORMAL COMPANY CARD
-===================================================== */
+/* NORMAL COMPANY CARD */
 
 .company-card {
     min-height: 158px;
-
     display: flex;
-
     align-items: flex-start;
-
     padding: 16px;
-
     border: 1px solid #ffb341 !important;
-
     border-radius: 15px !important;
-
     background: white;
-
     transition: 0.2s;
 }
 
 
 .company-card:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08) !important;
-
     transform: translateY(-2px);
 }
 
@@ -190,19 +140,13 @@
 .company-logo {
     width: 82px;
     height: 82px;
-
     min-width: 82px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border: 1px solid #ddd;
-
     border-radius: 8px;
-
     background: white;
-
     overflow: hidden;
 }
 
@@ -210,7 +154,6 @@
 .company-logo img {
     width: 90%;
     height: 90%;
-
     object-fit: contain;
 }
 
@@ -219,9 +162,7 @@
 
 .company-info {
     min-width: 0;
-
     margin-left: 14px;
-
     flex: 1;
 }
 
@@ -230,17 +171,12 @@
 
 .company-name {
     display: -webkit-box;
-
     overflow: hidden;
-
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-
     color: #344054;
-
     font-size: 16px !important;
     font-weight: 700 !important;
-
     line-height: 1.4 !important;
 }
 
@@ -249,9 +185,7 @@
 
 .company-category {
     margin-top: 8px !important;
-
     color: #7a8594;
-
     font-size: 14px !important;
 }
 
@@ -261,13 +195,9 @@
 .company-job-count {
     display: flex;
     align-items: center;
-
     gap: 6px;
-
     margin-top: 18px;
-
     color: #344054;
-
     font-size: 14px;
 }
 

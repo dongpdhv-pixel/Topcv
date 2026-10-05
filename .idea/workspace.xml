@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="f338407c-9952-4929-9cd4-4753e341b028" name="Changes" comment="finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jobcv/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/Pages/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/Pages/Home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/Pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/Pages/Home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/Pages/JobDetail/JobDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/Pages/JobDetail/JobDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/Pages/JobDetail/JobDetail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/Pages/JobDetail/JobDetail.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/Pages/Jobs/Jobs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/Pages/Jobs/Jobs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/Pages/Login/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/Pages/Login/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/components/CompanyCard/CompanyCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/components/CompanyCard/CompanyCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/components/CompanyCard/CompanyCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/components/CompanyCard/CompanyCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/components/CompanyList/CompanyList.css" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/components/CompanyList/CompanyList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobcv/src/components/Footer/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/components/Footer/Footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jobcv/src/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/components/Header/Header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jobcv/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/jobcv/src/components/Header/Header.jsx" afterDir="false" />
     </list>
@@ -39,30 +48,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/shark/WebstormProjects/f8-prj",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/snap/webstorm/683/plugins/javascript-plugin/jsLanguageServicesImpl/external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/shark/WebstormProjects/f8-prj&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/683/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -96,6 +105,8 @@
       <workItem from="1789752011114" duration="430000" />
       <workItem from="1790780000779" duration="4861000" />
       <workItem from="1790855119352" duration="742000" />
+      <workItem from="1791122721628" duration="43000" />
+      <workItem from="1791203052080" duration="1901000" />
     </task>
     <servers />
   </component>

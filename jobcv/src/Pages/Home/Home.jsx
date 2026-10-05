@@ -42,16 +42,13 @@ function Home({ setPage, refreshJobs, onJobClick }) {
                 console.log('COMPANIES RESULT:', companiesResult)
 
 
-                // =========================
-                // JOB TỪ API
-                // =========================
+               // Job từ API
 
                 let jobList = jobsResult.data || []
 
 
-                // =========================
+
                 // JOB VỪA ĐĂNG
-                // =========================
 
                 const savedJob =
                     localStorage.getItem('topcv_new_job')
@@ -81,9 +78,9 @@ function Home({ setPage, refreshJobs, onJobClick }) {
                 }
 
 
-                // =========================
+
                 // HIỂN THỊ
-                // =========================
+
 
                 setJobs(jobList)
 
@@ -99,9 +96,7 @@ function Home({ setPage, refreshJobs, onJobClick }) {
                 )
 
 
-                // =========================
                 // API LỖI VẪN HIỆN JOB MỚI
-                // =========================
 
                 const savedJob =
                     localStorage.getItem('topcv_new_job')
@@ -255,9 +250,9 @@ function Home({ setPage, refreshJobs, onJobClick }) {
 
             {/* JOB */}
 
-            {/* =========================
-                BANNER AN TOÀN
-            ========================= */}
+
+                {/*BANNER AN TOÀN*/}
+
 
             <div className="safe-banner">
 
@@ -276,9 +271,7 @@ function Home({ setPage, refreshJobs, onJobClick }) {
             </div>
 
 
-            {/* =========================
-                VIỆC LÀM NỔI BẬT
-            ========================= */}
+            {/* VIỆC LÀM NỔI BẬT*/}
 
             <Box className="featured-jobs">
 
